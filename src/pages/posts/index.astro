@@ -1,0 +1,15 @@
+---
+import { sanityClient } from "sanity:client";
+
+const posts = await sanityClient.fetch(`*[_type == "post"]`);
+---
+
+<ul>
+ {
+  posts.map((post: any) => (
+   <li>
+    <a href={"/posts/" + post.slug.current}>{post.title}</a>
+   </li>
+  ))
+ }
+</ul>
